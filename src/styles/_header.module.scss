@@ -1,0 +1,26 @@
+@import "mixins";
+
+.header {
+
+}
+
+.navbar{
+    position: relative; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    padding-top: 1.25rem; 
+    align-items: center; 
+    max-width: 1280px;
+
+    @include sm(){
+        padding-left: 2rem;
+        padding-right: 2rem; 
+    }
+
+    @include md(){
+        // display: flex;
+        margin-right: 1.5rem;
+        margin-left: 1.5rem; 
+    }
+}
+

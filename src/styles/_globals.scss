@@ -1,0 +1,50 @@
+$background-color-light: #ffffff;
+$text-color-light: #333333;
+
+// Dark theme colors
+$background-color-dark: #1f1f1f;
+$text-color-dark: #ffffff;
+
+:root {
+  &[data-theme='light'] {
+    --background-color: #{$background-color-light};
+    --text-color: #{$text-color-light};
+  }
+
+  &[data-theme='dark'] {
+    --background-color: #{$background-color-dark};
+    --text-color: #{$text-color-dark};
+  }
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+body {
+  font-family: inherit;
+  line-height: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}

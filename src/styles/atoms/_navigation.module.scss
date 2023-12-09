@@ -1,0 +1,34 @@
+@import "../mixins";
+
+.navigation {
+    flex: 1 1 0%; 
+    justify-content: space-between; 
+
+    @include md() { 
+        display: flex; 
+        margin-top: 0; 
+        font-size: 0.875rem;
+        line-height: 1.25rem; 
+        font-weight: 500; 
+    }
+}
+
+.navigationContainer {
+    align-items: center; 
+
+
+    @include md() {
+        display: flex; 
+        margin-left: 3rem; 
+        margin-left: 1.5rem; 
+        margin-top: 0; 
+    }
+}
+
+.link{
+    color: #9CA3AF;
+}
+
+.link:hover{
+    color: #787e87;
+}
