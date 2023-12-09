@@ -13,7 +13,7 @@ type Props = {
 };
 
 export default function Layout({ children }: Props) {
-  const [isDarkTheme, setDarkTheme] = useLocalStorage("darkTheme", true);
+  const [isDarkTheme, setDarkTheme] = useLocalStorage("darkTheme", false);
   let hasProducts = false;
 
   const toggleTheme = () => {
