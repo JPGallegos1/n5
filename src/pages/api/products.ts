@@ -2,8 +2,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { productData } from "@/services/products";
-import { Products } from "@/types";
+import { Product, Products } from "@/types";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Products>) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<Product[]>) {
   res.status(200).json(productData);
 }

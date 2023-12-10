@@ -1,21 +1,31 @@
+import { useState } from "react";
+import { useDebounce } from "usehooks-ts";
+
 import useProducts from "@/hooks/useProducts";
 import styles from "@/styles/_product.module.scss";
 
 import Layout from "../layout";
 import ProductCard from "../molecules/product-card";
+import SearchProductForm from "../molecules/forms/search-product";
 
 export default function ProductsTemplate() {
-  const { data, areProductsLoading } = useProducts();
+  const { products, areProductsLoading } = useProducts();
+  const [searchValue, setSearchValue] = useState("");
+  const debouncedValue = useDebounce<string>(searchValue, 500);
+  const filteredProducts = products.filter((product) =>
+    product.name.toLocaleLowerCase().includes(debouncedValue.toLocaleLowerCase()),
+  );
 
   return (
     <Layout>
       <section>
-        <div>
+        <div className={styles.container}>
+          <SearchProductForm setSearchValue={setSearchValue} />
           <ul className={`${styles.productList}`}>
             {!areProductsLoading ? (
-              data?.products.map((product) => (
+              filteredProducts?.map((product) => (
                 <li key={product.id}>
-                  <ProductCard amount={product.amount} price={product.price} title={product.name} />
+                  <ProductCard product={product} />
                 </li>
               ))
             ) : (

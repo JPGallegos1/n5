@@ -1,23 +1,22 @@
 import styles from "@/styles/_product.module.scss";
+import { Product } from "@/types";
+import { formatPrice } from "@/utils";
+
+import useCart from "../../hooks/useCart";
 
 type Props = {
-  title: string;
-  price: number;
-  amount: number;
+  product: Product;
 };
 
-export default function ProductCard({ title, price, amount }: Props) {
-  const handleBuyClick = () => {
-    console.log(`Buying ${title} for $${price}`);
-  };
+export default function ProductCard({ product }: Props) {
+  const { handleCart } = useCart();
 
   return (
     <div className={`${styles.productCard}`}>
-      {/* <img src="product-image.jpg" alt="Product Image" className="product-image" /> */}
-      <h2 className={`${styles.productTitle}`}>{title}</h2>
-      <p className={`${styles.productPrice}`}>{`$${price}`}</p>
-      <button className={`${styles.buyButton}`} onClick={handleBuyClick}>
-        Add to cart
+      <h2 className={`${styles.productTitle}`}>Product: {product.name}</h2>
+      <p className={`${styles.productPrice}`}>{`Price: $${formatPrice(product.price)}`}</p>
+      <button className={`${styles.buyButton}`} onClick={() => handleCart(product)}>
+        {`Add ${product.amount} to the cart`}
       </button>
     </div>
   );
