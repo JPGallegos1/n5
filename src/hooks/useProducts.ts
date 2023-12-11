@@ -8,10 +8,7 @@ export const fetcher: Fetcher<Product[], string> = (...args) =>
   fetch(...args).then((res) => res.json());
 
 export default function useProducts() {
-  const { data, isLoading: areProductsLoading } = useSWR(
-    "https://n5-jpgallegos20.vercel.app/api/products",
-    fetcher,
-  );
+  const { data, isLoading: areProductsLoading } = useSWR("/api/products", fetcher);
 
   return { data, areProductsLoading };
 }
