@@ -9,7 +9,7 @@ export const fetcher: Fetcher<Product[], string> = (...args) =>
 
 export default function useProducts() {
   const { data, isLoading: areProductsLoading } = useSWR(
-    "http://localhost:3000/api/products",
+    "https://n5-jpgallegos20.vercel.app/api/products",
     fetcher,
   );
 
