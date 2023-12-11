@@ -5,5 +5,9 @@ type Props = {
 };
 
 export default function Header({ children }: Props) {
-  return <header className={styles.header}>{children}</header>;
+  return (
+    <header className={styles.header} data-testid="header">
+      {children}
+    </header>
+  );
 }
