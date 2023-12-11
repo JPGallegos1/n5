@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import styles from "@/styles/atoms/_navigation.module.scss";
+import styles from "@/styles/_navigation.module.scss";
 
 export default function Navigation() {
   const navigation = [{ title: "Products", path: "/products" }];
