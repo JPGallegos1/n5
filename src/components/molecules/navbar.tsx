@@ -9,5 +9,9 @@ type Props = {
 };
 
 export default function Navbar({ children }: Props) {
-  return <nav className={`${styles.navbar} ${inter.className}`}>{children}</nav>;
+  return (
+    <nav className={`${styles.navbar} ${inter.className}`} data-testid="navigation">
+      {children}
+    </nav>
+  );
 }
