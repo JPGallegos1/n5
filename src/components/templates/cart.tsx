@@ -17,12 +17,13 @@ export default function CartTemplate() {
       <section id="cart-page">
         <div className={styles.container}>
           {cartItems.length > 0 ? (
-            <div>
+            <div className={styles.form}>
               <h2>{`Total on Cart: $${formatPrice(total)}`}</h2>
-              <div>
-                <div className={styles.btn}>
-                  <button onClick={() => setCartItems([])}>{`Clear cart`}</button>
-                </div>
+              <div className={styles.btn}>
+                <button
+                  className={styles.clearBtn}
+                  onClick={() => setCartItems([])}
+                >{`Clear cart`}</button>
               </div>
             </div>
           ) : null}
@@ -35,7 +36,9 @@ export default function CartTemplate() {
               ))
             ) : (
               <div className={styles.error}>
-                <h2>{`There's no products here!`}</h2>
+                <div>
+                  <h2>{`There's no products here!`}</h2>
+                </div>
                 <div>
                   <div className={styles.btn}>
                     <Link href="/products">{`Explore products`}</Link>
