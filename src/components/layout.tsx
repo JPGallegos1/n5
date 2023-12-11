@@ -1,7 +1,9 @@
 import { useLocalStorage } from "usehooks-ts";
+import Link from "next/link";
 
 import styles from "@/styles/_utils.module.scss";
 import Icon from "@/components/atoms/icon/index";
+import useCart from "@/hooks/useCart";
 
 import Navbar from "./molecules/navbar";
 import Header from "./organisms/header";
@@ -14,7 +16,7 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   const [isDarkTheme, setDarkTheme] = useLocalStorage("darkTheme", false);
-  let hasProducts = false;
+  const { cartItems } = useCart();
 
   const toggleTheme = () => {
     setDarkTheme((prevValue: boolean) => !prevValue);
@@ -43,7 +45,9 @@ export default function Layout({ children }: Props) {
                   <Icon type={isDarkTheme ? "lightTheme" : "darkTheme"} />
                 </button>
               </div>
-              <Icon type={hasProducts ? "fullCart" : "emptyCart"} />
+              <Link href="/cart">
+                <Icon type={cartItems.length > 0 ? "fullCart" : "emptyCart"} />
+              </Link>
             </div>
           </div>
         </Navbar>
